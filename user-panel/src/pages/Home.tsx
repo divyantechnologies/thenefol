@@ -1168,6 +1168,7 @@ export default function Home() {
                         ) : null
                       })()}
                       
+                      
                       {/* Rating */}
                       {rating > 0 && (
                         <div className="flex items-center gap-1 mb-2">
@@ -1415,43 +1416,55 @@ export default function Home() {
             </div>
             
             {/* Mobile Layout - Image First, Then Text and Button Below */}
-            <div className="md:hidden">
-              <div className="relative overflow-hidden rounded-xl mb-4" style={{ height: '250px' }}>
-                <img 
-                  src={completeKitImage} 
-                  alt="Complete Kit" 
-                  className="w-full h-full object-cover rounded-xl"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-              <div className="text-center px-4">
-                <h2 
-                  className="text-xl font-light mb-3 text-slate-900 tracking-[0.15em]" 
-                  style={{
-                    fontFamily: 'var(--font-heading-family)',
-                    letterSpacing: '0.15em'
-                  }}
-                >
-                  THE COMPLETE KIT
-                </h2>
-                <p className="text-sm text-slate-600 mb-6 font-light tracking-wide" style={{letterSpacing: '0.05em'}}>Get the full NEFOL® experience in one curated bundle</p>
-                <button
-                  onClick={() => window.location.hash = '#/user/combos'}
-                  className="px-6 py-3 text-white font-medium tracking-wide uppercase transition-colors duration-200 rounded-xl"
-                  style={{ backgroundColor: 'var(--arctic-blue-primary)' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--arctic-blue-primary-hover)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--arctic-blue-primary)'
-                  }}
-                >
-                  View Kit
-                </button>
-              </div>
-            </div>
+          
+<div className="md:hidden">
+  <div className="relative w-full overflow-hidden rounded-xl mb-4">
+    <div
+      className="relative w-full"
+      style={{ aspectRatio: '16 / 9' }}
+    >
+      <img
+        src={completeKitImage}
+        alt="Complete Kit"
+        className="absolute inset-0 w-full h-full object-contain"
+        onError={(e) => {
+          e.currentTarget.style.display = 'none'
+        }}
+      />
+    </div>
+  </div>
+
+  <div className="text-center px-4">
+    <h2
+      className="text-xl font-light mb-3 text-slate-900 tracking-[0.15em]"
+      style={{ fontFamily: 'var(--font-heading-family)' }}
+    >
+      THE COMPLETE KIT
+    </h2>
+
+    <p className="text-sm text-slate-600 mb-6 font-light tracking-wide">
+      Get the full NEFOL® experience in one curated bundle
+    </p>
+
+    <button
+      onClick={() => (window.location.hash = '#/user/combos')}
+      className="px-6 py-3 text-white font-medium tracking-wide uppercase transition-colors duration-200 rounded-xl"
+      style={{ backgroundColor: 'var(--arctic-blue-primary)' }}
+      onMouseEnter={(e) =>
+        (e.currentTarget.style.backgroundColor =
+          'var(--arctic-blue-primary-hover)')
+      }
+      onMouseLeave={(e) =>
+        (e.currentTarget.style.backgroundColor =
+          'var(--arctic-blue-primary)')
+      }
+    >
+      View Kit
+    </button>
+  </div>
+</div>
+
+            
           </div>
           <style>{`
             .complete-kit-container {
